@@ -17,20 +17,17 @@ public class ContainerWithMostWater {
        int maxArea = 0;
        while (left<right){
 
-           int distance = (left==0)? right : right-left;
-           int area     = 0;
+           int distance  = (left==0)? right : right-left;
+           int area      = 0;
 
-           if(height[left]<height[right]){
-               area = height[left]*distance;
-               left++;
-           }
+           int shorterSide = (height[left]<=height[right]) ?  height[left]:height[right];
 
-           else {
-               area = height[right]*distance;
-               right--;
-           }
-
+           area = distance*shorterSide;
            if(area>maxArea) maxArea=area;
+
+           if(shorterSide==height[left]){
+               left++;
+           } else{right--;}
        }
 
         return maxArea;
