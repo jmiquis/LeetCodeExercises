@@ -10,29 +10,27 @@ Notice that you may not slant the container.
 */
 
 public class ContainerWithMostWater {
-    public static int maxArea(int[] height) {
 
-       int left    = 0;
-       int right   = height.length-1;
-       int maxArea = 0;
-       while (left<right){
+            public static int maxArea(int[] height) {
 
-           int distance  = (left==0)? right : right-left;
-           int area      = 0;
+                int left = 0;
+                int right = height.length - 1;
+                int maxArea = 0;
+                while (left < right) {
 
-           int shorterSide = (height[left]<=height[right]) ?  height[left]:height[right];
+                    int distance = (left == 0) ? right : right - left;
+                    int area = 0;
+                    int shorterSide = (height[left] <= height[right]) ? height[left] : height[right];
 
-           area = distance*shorterSide;
-           if(area>maxArea) maxArea=area;
+                    area = distance * shorterSide;
+                    if (area > maxArea) maxArea = area;
 
-           if(shorterSide==height[left]){
-               left++;
-           }
-           else {
-               right--;
-           }
-       }
+                    if (shorterSide == height[left])
+                        left++;
+                    else right--;
+                }
+                return maxArea;
+        }
 
-        return maxArea;
-    }
 }
+
